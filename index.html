@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta: paper description and keywords -->
+  <meta name="description"
+        content="This is a description of the research paper.">
+  <meta name="keywords" content="Keyword1, Keyword2, Keyword3">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Paper title -->
+  <title>Title</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.ico">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <!-- Gradio -->
+  <script
+	  type="module"
+	  src="https://gradio.s3-us-west-2.amazonaws.com/5.42.0/gradio.js"
+  ></script>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://aidas.snu.ac.kr">
+        <span class="icon">
+            <i class="fas fa-home"></i>
+        </span>
+        <div style="padding-left:5px;">AIDAS Lab</div>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <!-- Paper Title -->
+          <h1 class="title is-1 publication-title">VIRST: Video-Instructed Reasoning Assistant for SpatioTemporal Segmentation</h1>
+
+          <!-- Conference Name and Year -->
+          <h1 class="title is-4 publication-title" style="color: #FF0066;">
+            CVPR 2026
+          </h1>
+
+          <!-- Authors and Affiliations -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://csjihwanh.com/">Jihwan Hong</a>,</span>
+            <span class="author-block">
+              <a href="https://sites.google.com/view/jydo/home/">Jaeyoung Do</a><sup>†</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Seoul National University</span>
+          </div>
+          <div class="publication-note">† Corresponding author</div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- Paper Link. -->
+              <span class="link-block">
+                <a href="https://"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper (Coming Soon)</span>
+                </a>
+              </span>
+              <!-- Arxiv Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv (Coming Soon)</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/AIDASLab/VIRST"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (Coming Soon)</span>
+                  </a>
+              </span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <!-- main image -->
+      <figure class="image">
+        <img src="./static/figures/spider.png"
+             alt="subtitle of the main image">
+      </figure>
+      <h2 class="subtitle has-text-centered" style="margin-top: 20px;">
+        Subtitle of the Main Image
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<!-- Paper abstract -->
+<section class="hero is-light ">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="column has-text-justified" style="padding: 0;">
+            <p>
+              We propose <strong>VIRST</strong> (Video-Instructed Reasoning Assistant for Spatio-Temporal Segmentation), an <strong>end-to-end framework</strong> that unifies global video reasoning and pixel-level mask prediction for Referring Video Object Segmentation (RVOS). VIRST bridges semantic reasoning and segmentation through <strong>Spatio-Temporal Fusion (STF)</strong>, which injects segmentation-aware video features into a vision-language backbone. It further introduces a <strong>Temporal Dynamic Anchor Updater (TDAU)</strong> to maintain temporally adjacent anchor frames, providing stable temporal cues under large motion, occlusion, and object reappearance. VIRST achieves <strong>state-of-the-art results</strong> across diverse RVOS benchmarks under realistic and challenging conditions.
+            </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Method -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Results -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Results</h2>
+        <div class="content has-text-justified">
+          <div class="revos-caption">
+            <span class="revos-caption-label">Table 1</span>
+            <span class="revos-caption-text">Performance comparison on the ReVOS benchmark. Best results are in <strong>bold</strong>; second-best are <u>underlined</u>.</span>
+          </div>
+          <div style="overflow-x: auto;">
+            <table class="table is-striped is-hoverable is-fullwidth has-text-centered is-size-6 revos-table">
+              <thead>
+                <tr>
+                  <th rowspan="2">Model</th>
+                  <th rowspan="2">Venue</th>
+                  <th colspan="3">Referring</th>
+                  <th colspan="3">Reasoning</th>
+                  <th colspan="3">Overall</th>
+                  <th rowspan="2">R</th>
+                </tr>
+                <tr>
+                  <th>J</th><th>F</th><th>J&amp;F</th>
+                  <th>J</th><th>F</th><th>J&amp;F</th>
+                  <th>J</th><th>F</th><th>J&amp;F</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-group-row">
+                  <td colspan="12">Segmentation Expert</td>
+                </tr>
+                <tr>
+                  <td>MTTR</td><td>ECCV'22</td>
+                  <td>29.8</td><td>30.2</td><td>30.0</td>
+                  <td>20.4</td><td>21.5</td><td>21.0</td>
+                  <td>25.1</td><td>25.9</td><td>25.5</td><td>5.6</td>
+                </tr>
+                <tr>
+                  <td>ReferFormer</td><td>CVPR'22</td>
+                  <td>31.2</td><td>34.3</td><td>32.7</td>
+                  <td>21.3</td><td>25.6</td><td>23.4</td>
+                  <td>26.2</td><td>29.9</td><td>28.1</td><td>8.8</td>
+                </tr>
+                <tr>
+                  <td>LMPM</td><td>ICCV'23</td>
+                  <td>29.0</td><td>39.1</td><td>34.1</td>
+                  <td>13.3</td><td>24.8</td><td>19.0</td>
+                  <td>21.2</td><td>27.1</td><td>26.8</td><td>3.8</td>
+                </tr>
+
+                <tr class="table-group-row">
+                  <td colspan="12">MLLM-based Segmentation Method</td>
+                </tr>
+                <tr>
+                  <td>LISA-7B</td><td>CVPR'24</td>
+                  <td>44.3</td><td>47.1</td><td>45.7</td>
+                  <td>33.8</td><td>38.4</td><td>36.1</td>
+                  <td>39.1</td><td>42.7</td><td>40.9</td><td>9.3</td>
+                </tr>
+                <tr>
+                  <td>VISA-7B</td><td>ECCV'24</td>
+                  <td>49.2</td><td>52.6</td><td>50.9</td>
+                  <td>40.6</td><td>45.4</td><td>43.0</td>
+                  <td>44.9</td><td>49.0</td><td>46.9</td><td>15.5</td>
+                </tr>
+                <tr>
+                  <td>VISA-13B</td><td>ECCV'24</td>
+                  <td>55.6</td><td>59.1</td><td>57.4</td>
+                  <td>42.0</td><td>46.7</td><td>44.3</td>
+                  <td>48.8</td><td>52.9</td><td>50.9</td><td>15.5</td>
+                </tr>
+                <tr>
+                  <td>HyperSeg</td><td>CVPR'25</td>
+                  <td>56.0</td><td>60.9</td><td>58.5</td>
+                  <td>50.2</td><td>55.8</td><td>53.0</td>
+                  <td>53.1</td><td>58.4</td><td>55.7</td><td>--</td>
+                </tr>
+                <tr>
+                  <td>VRS-HQ-7B</td><td>CVPR'25</td>
+                  <td>59.8</td><td>64.5</td><td>62.1</td>
+                  <td>53.5</td><td>58.7</td><td>56.1</td>
+                  <td>56.6</td><td>61.6</td><td>59.1</td><td>19.7</td>
+                </tr>
+                <tr>
+                  <td>VRS-HQ-13B</td><td>CVPR'25</td>
+                  <td><u>61.1</u></td><td><u>65.5</u></td><td><u>63.3</u></td>
+                  <td><u>54.1</u></td><td><u>59.4</u></td><td><u>56.8</u></td>
+                  <td><u>57.6</u></td><td><u>62.5</u></td><td><u>60.0</u></td><td>18.9</td>
+                </tr>
+                <tr>
+                  <td>InstructSeg</td><td>ICCV'25</td>
+                  <td>54.8</td><td>59.2</td><td>57.0</td>
+                  <td>49.2</td><td>54.7</td><td>51.9</td>
+                  <td>52.0</td><td>56.9</td><td>54.5</td><td>--</td>
+                </tr>
+                <tr>
+                  <td>RGA3-7B</td><td>ICCV'25</td>
+                  <td>58.7</td><td>62.3</td><td>60.5</td>
+                  <td>53.1</td><td>57.7</td><td>55.4</td>
+                  <td>55.9</td><td>60.0</td><td>58.0</td><td><strong>28.6</strong></td>
+                </tr>
+                <tr>
+                  <td>ViLLa-6B</td><td>ICCV'25</td>
+                  <td>--</td><td>--</td><td>--</td>
+                  <td>--</td><td>--</td><td>--</td>
+                  <td>54.9</td><td>59.1</td><td>57.0</td><td>--</td>
+                </tr>
+
+                <tr class="has-background-light">
+                  <td><strong>Ours (VIRST)</strong></td><td>CVPR'26</td>
+                  <td><strong>68.8</strong></td><td><strong>72.8</strong></td><td><strong>70.8</strong></td>
+                  <td><strong>63.9</strong></td><td><strong>68.3</strong></td><td><strong>66.1</strong></td>
+                  <td><strong>66.3</strong></td><td><strong>70.6</strong></td><td><strong>68.4</strong></td>
+                  <td><u>21.8</u></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="revos-caption" style="margin-top: 1.2rem;">
+            <span class="revos-caption-label">Table 2</span>
+            <span class="revos-caption-text">Performance comparison with previous methods on the validation sets of RVOS datasets. The best results are shown in <strong>bold</strong>, and the second-best results are <u>underlined</u>.</span>
+          </div>
+          <div style="overflow-x: auto;">
+            <table class="table is-striped is-hoverable is-fullwidth has-text-centered is-size-6 revos-table">
+              <thead>
+                <tr>
+                  <th rowspan="2">Model</th>
+                  <th rowspan="2">Venue</th>
+                  <th colspan="3">MeViS</th>
+                  <th colspan="3">Ref-YT-VOS</th>
+                  <th colspan="3">Ref-DAVIS17</th>
+                </tr>
+                <tr>
+                  <th>J</th><th>F</th><th>J&amp;F</th>
+                  <th>J</th><th>F</th><th>J&amp;F</th>
+                  <th>J</th><th>F</th><th>J&amp;F</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-group-row">
+                  <td colspan="11">Segmentation Expert</td>
+                </tr>
+                <tr>
+                  <td>ReferFormer</td><td>CVPR'22</td>
+                  <td>29.8</td><td>32.2</td><td>31.0</td>
+                  <td>61.3</td><td>64.6</td><td>62.9</td>
+                  <td>58.1</td><td>64.1</td><td>61.1</td>
+                </tr>
+                <tr>
+                  <td>OnlineRefer</td><td>ICCV'23</td>
+                  <td>-</td><td>-</td><td>-</td>
+                  <td>61.6</td><td>65.5</td><td>63.5</td>
+                  <td>61.6</td><td>67.7</td><td>64.8</td>
+                </tr>
+                <tr>
+                  <td>SAMWISE</td><td>CVPR'25</td>
+                  <td>49.5</td><td>46.6</td><td>52.4</td>
+                  <td>69.2</td><td>67.8</td><td>70.6</td>
+                  <td>70.6</td><td>67.4</td><td>74.5</td>
+                </tr>
+                <tr>
+                  <td>MPG-SAM2</td><td>ICCV'25</td>
+                  <td>50.7</td><td><u>56.7</u></td><td><u>53.7</u></td>
+                  <td><u>71.7</u></td><td><strong>76.1</strong></td><td><u>73.9</u></td>
+                  <td>68.8</td><td>76.0</td><td>72.4</td>
+                </tr>
+                <tr>
+                  <td>ReferDINO</td><td>ICCV'25</td>
+                  <td>44.7</td><td>53.9</td><td>49.3</td>
+                  <td>67.0</td><td>71.5</td><td>69.3</td>
+                  <td>65.1</td><td>72.9</td><td>68.9</td>
+                </tr>
+
+                <tr class="table-group-row">
+                  <td colspan="11">MLLM-based Segmentation Method</td>
+                </tr>
+                <tr>
+                  <td>LISA-7B</td><td>CVPR'24</td>
+                  <td>35.1</td><td>39.4</td><td>37.2</td>
+                  <td>53.4</td><td>54.3</td><td>53.9</td>
+                  <td>62.2</td><td>67.3</td><td>64.8</td>
+                </tr>
+                <tr>
+                  <td>VISA-7B</td><td>ECCV'24</td>
+                  <td>40.7</td><td>46.3</td><td>43.5</td>
+                  <td>59.8</td><td>63.2</td><td>61.5</td>
+                  <td>66.3</td><td>72.5</td><td>69.4</td>
+                </tr>
+                <tr>
+                  <td>VISA-13B</td><td>ECCV'24</td>
+                  <td>41.8</td><td>47.1</td><td>44.5</td>
+                  <td>61.4</td><td>64.7</td><td>63.0</td>
+                  <td>67.0</td><td>73.8</td><td>70.4</td>
+                </tr>
+                <tr>
+                  <td>VideoLISA</td><td>NeurIPS'24</td>
+                  <td>41.3</td><td>47.6</td><td>44.4</td>
+                  <td>61.7</td><td>65.7</td><td>63.7</td>
+                  <td>64.9</td><td>72.7</td><td>68.8</td>
+                </tr>
+                <tr>
+                  <td>VideoGLaMM</td><td>CVPR'25</td>
+                  <td>42.1</td><td>48.2</td><td>45.2</td>
+                  <td>65.4</td><td>68.2</td><td>66.8</td>
+                  <td>65.6</td><td>73.3</td><td>69.5</td>
+                </tr>
+                <tr>
+                  <td>HyperSeg</td><td>CVPR'25</td>
+                  <td>-</td><td>-</td><td>-</td>
+                  <td>-</td><td>-</td><td>68.5</td>
+                  <td>-</td><td>-</td><td>71.2</td>
+                </tr>
+                <tr>
+                  <td>VRS-HQ-7B</td><td>CVPR'25</td>
+                  <td>47.6</td><td>53.7</td><td>50.6</td>
+                  <td>68.3</td><td>72.5</td><td>70.4</td>
+                  <td><u>72.6</u></td><td><u>79.4</u></td><td><u>76.0</u></td>
+                </tr>
+                <tr>
+                  <td>VRS-HQ-13B</td><td>CVPR'25</td>
+                  <td><u>48.0</u></td><td>53.7</td><td>50.9</td>
+                  <td>69.0</td><td><u>73.1</u></td><td>71.0</td>
+                  <td>71.0</td><td>77.9</td><td>74.4</td>
+                </tr>
+                <tr>
+                  <td>InstructSeg</td><td>ICCV'25</td>
+                  <td>-</td><td>-</td><td>-</td>
+                  <td>65.4</td><td>69.5</td><td>67.5</td>
+                  <td>67.3</td><td>74.9</td><td>71.1</td>
+                </tr>
+                <tr>
+                  <td>ViLLa-6B</td><td>ICCV'25</td>
+                  <td>46.5</td><td>52.3</td><td>49.4</td>
+                  <td>64.6</td><td>70.4</td><td>67.5</td>
+                  <td>70.6</td><td>78.0</td><td>74.3</td>
+                </tr>
+
+                <tr class="has-background-light">
+                  <td><strong>Ours (VIRST)</strong></td><td>--</td>
+                  <td><strong>60.4</strong></td><td><strong>65.4</strong></td><td><strong>62.9</strong></td>
+                  <td><strong>72.2</strong></td><td><strong>76.1</strong></td><td><strong>74.2</strong></td>
+                  <td><strong>75.9</strong></td><td><strong>83.1</strong></td><td><strong>79.5</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+</section>
+
+<!-- BibTeX -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{virst2026,
+  author    = {Jihwan Hong and Jaeyoung Do},
+  title     = {VIRST: Video-Instructed Reasoning Assistant for SpatioTemporal Segmentation},
+  journal   = {CVPR},
+  year      = {2026},
+}</code></pre>
+  </div>
+</section>
+
+<!-- Footer (Don't change) -->
+<footer class="footer" style="padding-bottom: 40px;">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <a href="https://en.snu.ac.kr">
+            <img src="./static/images/snu_logo.png" alt="Logo" style="max-height: 48px; margin: 6px 10px;">
+          </a>
+          <a href="https://aidas.snu.ac.kr">
+            <img src="./static/images/aidaslab_logo.png" alt="Logo" style="max-height: 36px; margin: 10px 30px;">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,2 +1,7 @@
-# VIRST
-[CVPR 2026] Official Implementation for "VIRST: Video-Instructed Reasoning Assistant for SpatioTemporal Segmentation"
+# AIDAS Lab Project Page Template
+
+This repository hosts the source code for the AIDAS Lab Project Page.
+The template was originally derived from [Nerfies](https://nerfies.github.io).
+
+# Website License
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
