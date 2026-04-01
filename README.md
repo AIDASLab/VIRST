@@ -25,11 +25,11 @@
 
 ## TODO
 
-- [x] relase model code
+- [x] release model code
 - [x] release checkpoint
-- [ ] realsea data code
-- [ ] util script
-- [ ] trainscript
+- [ ] release data code
+- [ ] release utility scripts
+- [ ] release training scripts
 - [ ] eval script
 - [ ] demo script
 
