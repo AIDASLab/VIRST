@@ -50,3 +50,13 @@ Pretrained checkpoint: [Google Drive](https://drive.google.com/file/d/19PrTMWWzG
 ## Notes
 
 - The project page will be updated as the release is polished further.
+
+## Acknowledgements
+
+This project builds upon prior work, including 
+[VISA](https://github.com/cilinyan/VISA), 
+[LISA](https://github.com/JIA-Lab-research/LISA), 
+[VideoChat-Flash](https://github.com/OpenGVLab/VideoChat-Flash), 
+and [SAM2](https://github.com/facebookresearch/sam2).
+
+We thank the authors for releasing their code and models.
