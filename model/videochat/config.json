@@ -1,0 +1,221 @@
+{
+  "architectures": [
+    "VideoChatFlashQwenForCausalLM"
+  ],
+  "auto_map": {
+    "AutoConfig": "modeling_videochat_flash.VideoChatFlashQwenConfig",
+    "AutoModel": "modeling_videochat_flash.VideoChatFlashQwenForCausalLM"
+  },
+  "attention_dropout": 0.0,
+  "bos_token_id": 151643,
+  "eos_token_id": 151645,
+  "frame_aspect_ratio": "square",
+  "frame_grid_pinpoints": null,
+  "hidden_act": "silu",
+  "hidden_size": 3584,
+  "image_aspect_ratio": "anyres_nopad",
+  "image_crop_resolution": null,
+  "image_grid_pinpoints": [
+    [
+      448,
+      448
+    ],
+    [
+      448,
+      896
+    ],
+    [
+      448,
+      1344
+    ],
+    [
+      448,
+      1792
+    ],
+    [
+      448,
+      2240
+    ],
+    [
+      448,
+      2688
+    ],
+    [
+      896,
+      448
+    ],
+    [
+      896,
+      896
+    ],
+    [
+      896,
+      1344
+    ],
+    [
+      896,
+      1792
+    ],
+    [
+      896,
+      2240
+    ],
+    [
+      896,
+      2688
+    ],
+    [
+      1344,
+      448
+    ],
+    [
+      1344,
+      896
+    ],
+    [
+      1344,
+      1344
+    ],
+    [
+      1344,
+      1792
+    ],
+    [
+      1344,
+      2240
+    ],
+    [
+      1344,
+      2688
+    ],
+    [
+      1792,
+      448
+    ],
+    [
+      1792,
+      896
+    ],
+    [
+      1792,
+      1344
+    ],
+    [
+      1792,
+      1792
+    ],
+    [
+      1792,
+      2240
+    ],
+    [
+      1792,
+      2688
+    ],
+    [
+      2240,
+      448
+    ],
+    [
+      2240,
+      896
+    ],
+    [
+      2240,
+      1344
+    ],
+    [
+      2240,
+      1792
+    ],
+    [
+      2240,
+      2240
+    ],
+    [
+      2240,
+      2688
+    ],
+    [
+      2688,
+      448
+    ],
+    [
+      2688,
+      896
+    ],
+    [
+      2688,
+      1344
+    ],
+    [
+      2688,
+      1792
+    ],
+    [
+      2688,
+      2240
+    ],
+    [
+      2688,
+      2688
+    ]
+  ],
+  "image_split_resolution": null,
+  "initializer_range": 0.02,
+  "intermediate_size": 18944,
+  "llm_compress_layer_list": [
+    24
+  ],
+  "llm_compress_type": "attention",
+  "llm_image_token_ratio_list": [
+    1.0,
+
+    0.5
+  ],
+  "max_num_pixels": 14745600000,
+  "max_position_embeddings": 32768,
+  "max_window_layers": 28,
+  "min_slow_num_frames": 4,
+  "mm_close_init": false,
+  "mm_hidden_size": 1024,
+  "mm_llm_compress": false,
+  "mm_local_num_frames": 4,
+  "mm_newline_position": "nothing",
+  "mm_num_compress_latents": 128,
+  "mm_num_compress_query_type": "learnable",
+  "mm_patch_merge_type": "spatial_nopad",
+  "mm_pos_num_frames": 8,
+  "mm_projector_lr": null,
+  "mm_projector_type": "tome16_mlp_hd64",
+  "mm_resampler_type": null,
+  "mm_spatial_pool_mode": "bilinear",
+  "mm_tunable_parts": "mm_vision_tower,mm_mlp_adapter",
+  "mm_use_im_patch_token": false,
+  "mm_use_im_start_end": false,
+  "mm_vision_select_feature": "patch",
+  "mm_vision_select_layer": -2,
+  "mm_vision_tower": "umt-hd-large",
+  "mm_vision_tower_lr": 2e-06,
+  "model_type": "videochat_flash_qwen",
+  "num_attention_heads": 28,
+  "num_hidden_layers": 28,
+  "num_key_value_heads": 4,
+  "pos_skipping_range": 4096,
+  "rms_norm_eps": 1e-06,
+  "rope_scaling": null,
+  "rope_theta": 1000000.0,
+  "sliding_window": 131072,
+  "tie_word_embeddings": false,
+  "tokenizer_model_max_length": 32768,
+  "tokenizer_padding_side": "right",
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.40.1",
+  "use_cache": true,
+  "use_mm_proj": true,
+  "use_pos_skipping": false,
+  "use_sliding_window": false,
+  "vision_encode_type": "video_image",
+  "vision_tower_pretrained": null,
+  "vocab_size": 152064
+}
