@@ -3,7 +3,7 @@
 
 <p align="center">
   <a href="static/arch_cr_v1.pdf">
-    <img src="static/arch_cr_v1.png" alt="VIRST architecture figure" width="90%">
+    <img src="static/arch_cr_v1.png" alt="VIRST architecture figure" width="100%">
   </a>
 </p>
 
