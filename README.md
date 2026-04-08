@@ -27,10 +27,10 @@
 
 - [x] release model code
 - [x] release checkpoint
-- [ ] release data code
-- [ ] release utility scripts
+- [x] release data code
+- [x] release utility scripts
+- [ ] release eval script
 - [ ] release training scripts
-- [ ] eval script
 - [ ] demo script
 
 ## Overview
