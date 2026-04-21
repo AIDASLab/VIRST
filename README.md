@@ -29,7 +29,7 @@
 - [x] release checkpoint
 - [x] release data code
 - [x] release utility scripts
-- [ ] release eval script
+- [x] release eval script
 - [ ] release training scripts
 - [ ] demo script
 
@@ -43,9 +43,61 @@ This repository contains the core training and evaluation code for VIRST, includ
 - dataset handling in `data/`
 - utility code in `utils/`
 
+# Installation 
+```
+conda create -n virst python=3.10 -y 
+conda activate virst
+pip install -r requirements.txt
+```
+
+
 ## Checkpoint
 
 Pretrained checkpoint: [Google Drive](https://drive.google.com/file/d/19PrTMWWzGHBTrZ0JTe1feH205vjHkoNx/view?usp=sharing)
+
+
+## Dataset 
+- Download Ref-DAVIS, Ref-YouTube-VOS, [MeViS](https://github.com/henghuiding/MeViS), [ReVOS](https://github.com/cilinyan/VISA)
+- Store them in the following directory 
+
+```
+RVOS_ROOT
+├── ReVOS
+│   ├── JPEGImages 
+│   ├── mask_dict.json             
+│   ├── mask_dict_foreground.json   
+│   ├── meta_expressions_train_.json 
+│   └── meta_expressions_valid_.json 
+├── lvvis
+│   └── train
+|       ├── JPEGImages
+|       ├── mask_dict.json
+|       └── meta_expressions.json
+├── Ref-Youtube-VOS
+│   ├── meta_expressions
+|   |   ├── train/meta_expressions.json
+|   |   └── valid/meta_expressions.json
+│   ├── train
+|   |   ├── JPEGImages
+|   |   └── mask_dict.pkl
+│   └── valid
+|       └── JPEGImages
+├── davis17
+│   ├── meta_expressions
+|   |   ├── train/meta_expressions.json
+|   |   └── valid/meta_expressions.json
+│   ├── train
+|   |   ├── JPEGImages
+|   |   └── mask_dict.pkl
+│   └── valid
+|       ├── JPEGImages
+|       └── mask_dict.pkl
+└── mevis
+```
+
+## Evaluation
+To be added 
+
 
 ## Notes
 
