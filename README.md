@@ -100,7 +100,37 @@ RVOS_ROOT
 ```
 
 ## Evaluation
-To be added 
+
+### MeViS v1
+
+Run MeViS evaluation with:
+
+```bash
+MODEL_CHECKPOINT=/path/to/checkpoint \
+bash scripts/eval_mevis.sh mevis_valid
+```
+
+If your dataset is not stored under the default `<repo>/dataset/RVOS_ROOT`, set `RVOS_ROOT` explicitly:
+
+```bash
+MODEL_CHECKPOINT=/path/to/checkpoint \
+RVOS_ROOT=/path/to/RVOS_ROOT \
+bash scripts/eval_mevis.sh mevis_valid
+```
+
+Supported dataset names for the script are:
+
+- `mevis_valid`
+- `mevis_test`
+
+Note:
+- Predictions are saved under `./eval_results/mevis_valid/` by default.
+
+To compute the MeViS metric after inference:
+
+```bash
+python -m utils.evaluation.eval_rvos ./eval_results/mevis_valid/<run_name> --dataset mevis_valid
+```
 
 
 ## Notes
