@@ -60,6 +60,8 @@ Pretrained checkpoint: [Google Drive](https://drive.google.com/file/d/19PrTMWWzG
 
 ## Dataset 
 - Download Ref-DAVIS, Ref-YouTube-VOS, [MeViS](https://github.com/henghuiding/MeViS), [ReVOS](https://github.com/cilinyan/VISA)
+- By default, `data/dataset_config.py` resolves dataset paths to absolute paths under `<repo>/dataset/`.
+- You can override the defaults with `VIRST_LISA_ROOT`, `VIRST_RVOS_ROOT`, `VIRST_CHATUNIVI_ROOT`, and `VIRST_VQA_VIDEO_ROOT`.
 - Store them in the following directory 
 
 ```
