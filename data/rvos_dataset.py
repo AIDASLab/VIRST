@@ -38,10 +38,11 @@ class RVOSDataset(BaseVirstDataset):
         output_dir              : str   = "/home/csjihwanh/virst/test/mask_results", # only for inference
         train                   : bool  = True,
         only_question           : bool  = False,
+        rvos_root               : str   = None,
     ):
         super().__init__(tokenizer, data_args)
         self.train = train 
-        self.root = RVOS_ROOT
+        self.root = rvos_root or RVOS_ROOT
         self.output_dir = output_dir
         self.num_classes_per_sample = num_classes_per_sample
         self.seg_image_size = data_args.seg_image_size

@@ -45,6 +45,8 @@ This repository contains the core training and evaluation code for VIRST, includ
 
 # Installation 
 ```
+git clone https://github.com/AIDASLab/VIRST
+cd VIRST
 conda create -n virst python=3.10 -y 
 conda activate virst
 pip install -r requirements.txt

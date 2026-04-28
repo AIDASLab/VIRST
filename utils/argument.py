@@ -116,6 +116,7 @@ class DataArguments:
     seg_token_num: int = 10
     seg_image_length: int = 8
     seg_image_size: int = 1024
+    rvos_root: Optional[str] = field(default=None)
 
 @dataclass
 class TrainingArguments(transformers.TrainingArguments):
@@ -160,3 +161,5 @@ class TrainingArguments(transformers.TrainingArguments):
     debug: bool = False 
     dataset: str = field(default='refytvos')
     split: str = field(default='val')
+    eval_output_root: str = field(default="./eval_results")
+    eval_log_root: Optional[str] = field(default=None)
