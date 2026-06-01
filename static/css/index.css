@@ -13,11 +13,6 @@ body {
     margin-bottom: 5px;
 }
 
-.dnerf {
-  font-variant: small-caps;
-}
-
-
 .teaser .hero-body {
   padding-top: 0;
   padding-bottom: 3rem;
@@ -27,25 +22,6 @@ body {
   font-family: 'Google Sans', sans-serif;
 }
 
-
-.publication-title {
-}
-
-.publication-banner {
-  max-height: parent;
-
-}
-
-.publication-banner video {
-  position: relative;
-  left: auto;
-  top: auto;
-  transform: none;
-  object-fit: fit;
-}
-
-.publication-header .hero-body {
-}
 
 .publication-title {
     font-family: 'Google Sans', sans-serif;
@@ -67,9 +43,6 @@ body {
     font-weight: bolder;
 }
 
-.publication-authors {
-}
-
 .publication-authors a {
    color: hsl(204, 86%, 53%) !important;
 }
@@ -89,18 +62,94 @@ body {
   margin-top: 0.35rem;
 }
 
+.method-summary {
+  color: #303946;
+}
+
+.method-grid {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 1.25rem 0 1.5rem;
+}
+
+.method-card {
+  background: #fbfcff;
+  border: 1px solid #dbe4f0;
+  border-radius: 8px;
+  padding: 0.9rem;
+}
+
+.method-card h3 {
+  color: #2459b8;
+  font-family: 'Google Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.method-card p {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.method-figure {
+  margin: 1.2rem auto;
+  max-width: 940px;
+  text-align: center;
+}
+
+.method-figure img {
+  border: 1px solid #dbe4f0;
+  border-radius: 8px;
+  display: block;
+  width: 100%;
+}
+
+.method-figure-compact {
+  max-width: 900px;
+}
+
+.method-figure figcaption {
+  color: #606975;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-top: 0.45rem;
+}
+
 .table-group-row td {
   background: #f6f8fb;
   color: #445;
   font-weight: 700;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 0.66rem;
+}
+
+.results-table-wrap {
+  border: 1px solid #dbe4f0;
+  border-radius: 8px;
+  margin: 0 auto 1.4rem;
+  max-width: 920px;
+  overflow: visible;
+}
+
+.results-table-wrap .table {
+  margin-bottom: 0;
+  table-layout: auto;
 }
 
 .revos-table th,
 .revos-table td {
-  font-size: 0.92rem;
+  font-size: 0.68rem;
+  line-height: 1.2;
+  padding: 0.3em 0.38em !important;
+  white-space: normal;
+}
+
+.revos-table th {
+  background: #f8faff;
 }
 
 .revos-caption {
@@ -109,7 +158,7 @@ body {
   border-left: 3px solid #3273dc;
   background: #f7faff;
   color: #39424e;
-  max-width: 980px;
+  max-width: 920px;
   line-height: 1.4;
 }
 
@@ -122,35 +171,127 @@ body {
 }
 
 .revos-caption-text {
-  font-size: 0.97rem;
+  font-size: 0.9rem;
 }
 
-.publication-banner img {
+.content .results-spider {
+  margin: 0 auto 1.4rem;
+  max-width: 520px;
+  text-align: center;
 }
 
-.publication-authors {
-  /*color: #4286f4;*/
+.content .results-spider img {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.qualitative-examples {
+  background: #fbfcff;
+}
+
+.qualitative-grid {
+  display: grid;
+  gap: 1.35rem;
+  margin-top: 1.5rem;
+}
+
+.qualitative-dataset-title {
+  color: #303946;
+  margin-top: 2rem;
+}
+
+.qualitative-example {
+  border: 1px solid #dbe4f0;
+  border-radius: 8px;
+  background: #fff;
+  padding: 1rem;
+}
+
+.qualitative-caption {
+  color: #303946;
+  font-size: 1rem;
+  line-height: 1.45;
+  margin-bottom: 0.85rem;
+}
+
+.qualitative-caption span {
+  color: #2459b8;
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 700;
+}
+
+.video-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.video-pair figure {
+  margin: 0;
+}
+
+.video-pair figcaption {
+  color: #445;
+  font-family: 'Google Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+  text-align: center;
+}
+
+.video-pair video {
+  background: #111;
+  border-radius: 6px;
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+@media screen and (max-width: 640px) {
+  .method-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .results-table-wrap {
+    max-width: 100%;
+  }
+
+  .video-pair {
+    grid-template-columns: 1fr;
+  }
 }
 
 .publication-video {
     position: relative;
     width: 100%;
-    height: 0;
-    padding-bottom: 56.25%;
-
+    aspect-ratio: 16 / 9;
     overflow: hidden;
     border-radius: 10px !important;
 }
 
 .publication-video iframe {
     position: absolute;
+    border: 0;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
 }
 
-.publication-body img {
+.youtube-teaser {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.youtube-teaser iframe {
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 8px;
+  height: auto;
+  max-width: 960px;
+  width: 100%;
 }
 
 .results-carousel {

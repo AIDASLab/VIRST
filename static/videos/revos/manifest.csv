@@ -1,0 +1,5 @@
+example_id,caption,original_video,masked_video
+revos-01,The aircraft that is most likely to be low on fuel.,revos-01-original.mp4,revos-01-masked.mp4
+revos-02,The wineglass in which the wine may be finished first.,revos-02-original.mp4,revos-02-masked.mp4
+revos-03,Grey parrot soaking its feathers in liquid.,revos-03-original.mp4,revos-03-masked.mp4
+revos-04,The panda(s) that remains seated without moving throughout.,revos-04-original.mp4,revos-04-masked.mp4

@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <!-- Meta: paper description and keywords -->
   <meta name="description"
-        content="This is a description of the research paper.">
-  <meta name="keywords" content="Keyword1, Keyword2, Keyword3">
+        content="VIRST is an end-to-end framework for referring video object segmentation that unifies video reasoning and pixel-level mask prediction.">
+  <meta name="keywords" content="VIRST, referring video object segmentation, RVOS, video reasoning, spatio-temporal segmentation, CVPR 2026">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <!-- Paper title -->
-  <title>Title</title>
+  <title>VIRST: Video-Instructed Reasoning Assistant for SpatioTemporal Segmentation</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
@@ -28,11 +29,6 @@
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
 
-  <!-- Gradio -->
-  <script
-	  type="module"
-	  src="https://gradio.s3-us-west-2.amazonaws.com/5.42.0/gradio.js"
-  ></script>
 </head>
 <body>
 
@@ -87,22 +83,22 @@
             <div class="publication-links">
               <!-- Paper Link. -->
               <span class="link-block">
-                <a href="https://"
+                <a href="https://cvpr.thecvf.com/virtual/2026/poster/37856"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
                   </span>
-                  <span>Paper (Coming Soon)</span>
+                  <span>Paper</span>
                 </a>
               </span>
               <!-- Arxiv Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/abs/"
+                <a href="https://arxiv.org/abs/2603.27060"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
                   </span>
-                  <span>arXiv (Coming Soon)</span>
+                  <span>arXiv</span>
                 </a>
               </span>
               <!-- Code Link. -->
@@ -112,7 +108,7 @@
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
-                  <span>Code (Coming Soon)</span>
+                  <span>Code</span>
                   </a>
               </span>
 
@@ -129,14 +125,9 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <!-- main image -->
-      <figure class="image">
-        <img src="./static/figures/spider.png"
-             alt="subtitle of the main image">
-      </figure>
-      <h2 class="subtitle has-text-centered" style="margin-top: 20px;">
-        Subtitle of the Main Image
-      </h2>
+      <div class="youtube-teaser">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/-PMtkIppJZI?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
     </div>
   </div>
 </section>
@@ -153,6 +144,7 @@
             <p>
               We propose <strong>VIRST</strong> (Video-Instructed Reasoning Assistant for Spatio-Temporal Segmentation), an <strong>end-to-end framework</strong> that unifies global video reasoning and pixel-level mask prediction for Referring Video Object Segmentation (RVOS). VIRST bridges semantic reasoning and segmentation through <strong>Spatio-Temporal Fusion (STF)</strong>, which injects segmentation-aware video features into a vision-language backbone. It further introduces a <strong>Temporal Dynamic Anchor Updater (TDAU)</strong> to maintain temporally adjacent anchor frames, providing stable temporal cues under large motion, occlusion, and object reappearance. VIRST achieves <strong>state-of-the-art results</strong> across diverse RVOS benchmarks under realistic and challenging conditions.
             </p>
+          </div>
         </div>
       </div>
     </div>
@@ -166,7 +158,42 @@
     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Method</h2>
-        <div class="content has-text-justified"></div>
+        <div class="content has-text-justified method-summary">
+          <p>
+            <strong>VIRST</strong> unifies video-level reasoning and pixel-level mask prediction in a single end-to-end RVOS framework. Instead of relying on a fixed keyframe or an external propagation pipeline, VIRST lets the vision-language model reason over the video while segmentation-aware features provide the spatial detail needed for accurate masks.
+          </p>
+
+          <div class="method-grid">
+            <div class="method-card">
+              <h3>Spatio-Temporal Fusion</h3>
+              <p>
+                STF bridges semantic video tokens and dense segmentation features. Learnable <strong>[ST]</strong> tokens are fused with segmentation-aware video features before and after VLM reasoning, producing frame-specific prompts for the mask decoder.
+              </p>
+            </div>
+            <div class="method-card">
+              <h3>Dynamic Anchors</h3>
+              <p>
+                TDAU maintains multiple temporally nearby anchor frames and updates them as the video progresses. This gives the decoder stable cues under large motion, occlusion, and object reappearance.
+              </p>
+            </div>
+            <div class="method-card">
+              <h3>Progressive Training</h3>
+              <p>
+                Training gradually aligns language reasoning, spatial grounding, and temporal consistency so the unified model can handle both referring and reasoning-oriented video segmentation.
+              </p>
+            </div>
+          </div>
+
+          <figure class="method-figure">
+            <img src="./static/figures/architecture.png" alt="VIRST architecture and spatio-temporal fusion module" loading="lazy">
+            <figcaption>VIRST architecture and the two-stage spatio-temporal fusion module.</figcaption>
+          </figure>
+
+          <figure class="method-figure method-figure-compact">
+            <img src="./static/figures/anchor_selection.png" alt="Temporal Dynamic Anchor Updater anchor frame selection" loading="lazy">
+            <figcaption>TDAU dynamically selects temporally local anchor frames to support robust mask prediction.</figcaption>
+          </figure>
+        </div>
       </div>
     </div>
   </div>
@@ -179,11 +206,15 @@
       <div class="column is-full-width">
         <h2 class="title is-3">Results</h2>
         <div class="content has-text-justified">
+          <figure class="results-spider">
+            <img src="./static/figures/spider.png" alt="VIRST benchmark results summary" loading="lazy">
+          </figure>
+
           <div class="revos-caption">
             <span class="revos-caption-label">Table 1</span>
             <span class="revos-caption-text">Performance comparison on the ReVOS benchmark. Best results are in <strong>bold</strong>; second-best are <u>underlined</u>.</span>
           </div>
-          <div style="overflow-x: auto;">
+          <div class="results-table-wrap">
             <table class="table is-striped is-hoverable is-fullwidth has-text-centered is-size-6 revos-table">
               <thead>
                 <tr>
@@ -296,7 +327,7 @@
             <span class="revos-caption-label">Table 2</span>
             <span class="revos-caption-text">Performance comparison with previous methods on the validation sets of RVOS datasets. The best results are shown in <strong>bold</strong>, and the second-best results are <u>underlined</u>.</span>
           </div>
-          <div style="overflow-x: auto;">
+          <div class="results-table-wrap">
             <table class="table is-striped is-hoverable is-fullwidth has-text-centered is-size-6 revos-table">
               <thead>
                 <tr>
@@ -412,7 +443,7 @@
                 </tr>
 
                 <tr class="has-background-light">
-                  <td><strong>Ours (VIRST)</strong></td><td>--</td>
+                  <td><strong>Ours (VIRST)</strong></td><td>CVPR'26</td>
                   <td><strong>60.4</strong></td><td><strong>65.4</strong></td><td><strong>62.9</strong></td>
                   <td><strong>72.2</strong></td><td><strong>76.1</strong></td><td><strong>74.2</strong></td>
                   <td><strong>75.9</strong></td><td><strong>83.1</strong></td><td><strong>79.5</strong></td>
@@ -422,16 +453,198 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- Qualitative Examples -->
+<section class="section qualitative-examples">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Qualitative Examples</h2>
+        <p class="content has-text-justified">
+          We show representative Referring Video Object Segmentation examples. Each row compares the original video with VIRST's predicted mask overlay for the corresponding language expression.
+        </p>
+
+        <h3 class="title is-4 qualitative-dataset-title">ReVOS</h3>
+        <div class="qualitative-grid">
+          <article class="qualitative-example">
+            <p class="qualitative-caption">
+              <span>Expression:</span> The aircraft that is most likely to be low on fuel.
+            </p>
+            <div class="video-pair">
+              <figure>
+                <figcaption>Original</figcaption>
+                <video autoplay muted loop playsinline controls preload="metadata">
+                  <source src="./static/videos/revos/revos-01-original.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <figure>
+                <figcaption>Masked</figcaption>
+                <video autoplay muted loop playsinline controls preload="metadata">
+                  <source src="./static/videos/revos/revos-01-masked.mp4" type="video/mp4">
+                </video>
+              </figure>
+            </div>
+          </article>
+
+          <article class="qualitative-example">
+            <p class="qualitative-caption">
+              <span>Expression:</span> The wineglass in which the wine may be finished first.
+            </p>
+            <div class="video-pair">
+              <figure>
+                <figcaption>Original</figcaption>
+                <video autoplay muted loop playsinline controls preload="metadata">
+                  <source src="./static/videos/revos/revos-02-original.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <figure>
+                <figcaption>Masked</figcaption>
+                <video autoplay muted loop playsinline controls preload="metadata">
+                  <source src="./static/videos/revos/revos-02-masked.mp4" type="video/mp4">
+                </video>
+              </figure>
+            </div>
+          </article>
+
+          <article class="qualitative-example">
+            <p class="qualitative-caption">
+              <span>Expression:</span> Grey parrot soaking its feathers in liquid.
+            </p>
+            <div class="video-pair">
+              <figure>
+                <figcaption>Original</figcaption>
+                <video autoplay muted loop playsinline controls preload="metadata">
+                  <source src="./static/videos/revos/revos-03-original.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <figure>
+                <figcaption>Masked</figcaption>
+                <video autoplay muted loop playsinline controls preload="metadata">
+                  <source src="./static/videos/revos/revos-03-masked.mp4" type="video/mp4">
+                </video>
+              </figure>
+            </div>
+          </article>
+
+          <article class="qualitative-example">
+            <p class="qualitative-caption">
+              <span>Expression:</span> The panda(s) that remains seated without moving throughout.
+            </p>
+            <div class="video-pair">
+              <figure>
+                <figcaption>Original</figcaption>
+                <video autoplay muted loop playsinline controls preload="metadata">
+                  <source src="./static/videos/revos/revos-04-original.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <figure>
+                <figcaption>Masked</figcaption>
+                <video autoplay muted loop playsinline controls preload="metadata">
+                  <source src="./static/videos/revos/revos-04-masked.mp4" type="video/mp4">
+                </video>
+              </figure>
+            </div>
+          </article>
+        </div>
+
+        <h3 class="title is-4 qualitative-dataset-title">MeViS</h3>
+        <div class="qualitative-grid">
+          <article class="qualitative-example">
+            <p class="qualitative-caption">
+              <span>Expression:</span> The three little bears following the big bear.
+            </p>
+            <div class="video-pair">
+              <figure>
+                <figcaption>Original</figcaption>
+                <video autoplay muted loop playsinline controls preload="metadata">
+                  <source src="./static/videos/example-01-original.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <figure>
+                <figcaption>Masked</figcaption>
+                <video autoplay muted loop playsinline controls preload="metadata">
+                  <source src="./static/videos/example-01-masked.mp4" type="video/mp4">
+                </video>
+              </figure>
+            </div>
+          </article>
+
+          <article class="qualitative-example">
+            <p class="qualitative-caption">
+              <span>Expression:</span> The big bear is leading three small bear cubs across the road.
+            </p>
+            <div class="video-pair">
+              <figure>
+                <figcaption>Original</figcaption>
+                <video autoplay muted loop playsinline controls preload="metadata">
+                  <source src="./static/videos/example-02-original.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <figure>
+                <figcaption>Masked</figcaption>
+                <video autoplay muted loop playsinline controls preload="metadata">
+                  <source src="./static/videos/example-02-masked.mp4" type="video/mp4">
+                </video>
+              </figure>
+            </div>
+          </article>
+
+          <article class="qualitative-example">
+            <p class="qualitative-caption">
+              <span>Expression:</span> The one with a deeper shade of fur among the two dogs roughhousing and having fun.
+            </p>
+            <div class="video-pair">
+              <figure>
+                <figcaption>Original</figcaption>
+                <video autoplay muted loop playsinline controls preload="metadata">
+                  <source src="./static/videos/example-04-original.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <figure>
+                <figcaption>Masked</figcaption>
+                <video autoplay muted loop playsinline controls preload="metadata">
+                  <source src="./static/videos/example-04-masked.mp4" type="video/mp4">
+                </video>
+              </figure>
+            </div>
+          </article>
+
+          <article class="qualitative-example">
+            <p class="qualitative-caption">
+              <span>Expression:</span> A bear standing tall and amusingly swinging a hula hoop with its neck.
+            </p>
+            <div class="video-pair">
+              <figure>
+                <figcaption>Original</figcaption>
+                <video autoplay muted loop playsinline controls preload="metadata">
+                  <source src="./static/videos/example-05-original.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <figure>
+                <figcaption>Masked</figcaption>
+                <video autoplay muted loop playsinline controls preload="metadata">
+                  <source src="./static/videos/example-05-masked.mp4" type="video/mp4">
+                </video>
+              </figure>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- BibTeX -->
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@misc{virst2026,
+    <pre><code>@inproceedings{hong2026virst,
   author    = {Jihwan Hong and Jaeyoung Do},
   title     = {VIRST: Video-Instructed Reasoning Assistant for SpatioTemporal Segmentation},
-  journal   = {CVPR},
+  booktitle = {Proceedings of the Computer Vision and Pattern Recognition Conference (CVPR)},
   year      = {2026},
 }</code></pre>
   </div>
@@ -451,10 +664,10 @@
         </div>
         <div class="content has-text-centered">
           <a href="https://en.snu.ac.kr">
-            <img src="./static/images/snu_logo.png" alt="Logo" style="max-height: 48px; margin: 6px 10px;">
+            <img src="./static/images/snu_logo.png" alt="Seoul National University logo" style="max-height: 48px; margin: 6px 10px;" loading="lazy">
           </a>
           <a href="https://aidas.snu.ac.kr">
-            <img src="./static/images/aidaslab_logo.png" alt="Logo" style="max-height: 36px; margin: 10px 30px;">
+            <img src="./static/images/aidaslab_logo.png" alt="AIDAS Lab logo" style="max-height: 36px; margin: 10px 30px;" loading="lazy">
           </a>
         </div>
       </div>

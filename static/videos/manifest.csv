@@ -1,0 +1,5 @@
+example_id,caption,original_video,masked_video
+example-01,The three little bears following the big bear.,example-01-original.mp4,example-01-masked.mp4
+example-02,The big bear is leading three small bear cubs across the road.,example-02-original.mp4,example-02-masked.mp4
+example-04,The one with a deeper shade of fur among the two dogs roughhousing and having fun.,example-04-original.mp4,example-04-masked.mp4
+example-05,A bear standing tall and amusingly swinging a hula hoop with its neck.,example-05-original.mp4,example-05-masked.mp4
