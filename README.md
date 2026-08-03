@@ -70,8 +70,10 @@ export CONDA_PKGS_DIRS="$PWD/.conda-pkgs"
 
 ## Model assets
 
-Download the VideoChat-Flash source and base weights, the SAM2.1 Hiera Large
-checkpoint, and the VIRST checkpoint with:
+Download the VideoChat-Flash source, the exact
+[`OpenGVLab/VideoChat-Flash-Qwen2-7B_res448`](https://huggingface.co/OpenGVLab/VideoChat-Flash-Qwen2-7B_res448)
+base checkpoint, the SAM2.1 Hiera Large checkpoint, and the VIRST checkpoint
+with:
 
 ```bash
 bash scripts/setup_assets.sh
@@ -86,8 +88,20 @@ checkpoints/sam2.1_hiera_large.pt
 checkpoints/virst_checkpoint.pt
 ```
 
-The VideoChat-Flash source clone is retained for provenance and reference. VIRST
-loads the Hugging Face base weights from `checkpoints/videochat`.
+The two VideoChat-Flash paths serve different purposes:
+
+- `third_party/VideoChat-Flash/` is a clone of the upstream
+  [VideoChat-Flash source repository](https://github.com/OpenGVLab/VideoChat-Flash).
+- `checkpoints/videochat/` is only the local destination name for the exact
+  `OpenGVLab/VideoChat-Flash-Qwen2-7B_res448` Hugging Face model. VIRST loads its
+  base weights from this directory.
+
+The setup script performs the model download equivalent to:
+
+```bash
+huggingface-cli download OpenGVLab/VideoChat-Flash-Qwen2-7B_res448 \
+  --local-dir checkpoints/videochat
+```
 
 
 ## Checkpoint
