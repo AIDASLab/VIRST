@@ -115,6 +115,29 @@ Pretrained checkpoint: [Google Drive](https://drive.google.com/file/d/19PrTMWWzG
 - You can override the defaults with `VIRST_LISA_ROOT`, `VIRST_RVOS_ROOT`, `VIRST_CHATUNIVI_ROOT`, and `VIRST_VQA_VIDEO_ROOT`.
 - Store them in the following directory 
 
+For the documented `mevis_valid` evaluation, download the official MeViS
+`valid_u` split from [`FudanCVL/MeViSv2`](https://huggingface.co/datasets/FudanCVL/MeViSv2)
+after installing the Python requirements:
+
+```bash
+mkdir -p dataset/RVOS_ROOT/mevis/valid_u
+
+huggingface-cli download FudanCVL/MeViSv2 \
+  --repo-type dataset \
+  --include "valid_u/*" \
+  --local-dir dataset/.mevis-download
+
+tar -xf dataset/.mevis-download/valid_u/JPEGImages.tar \
+  -C dataset/RVOS_ROOT/mevis/valid_u
+cp dataset/.mevis-download/valid_u/mask_dict.json \
+  dataset/RVOS_ROOT/mevis/valid_u/mask_dict.json
+cp dataset/.mevis-download/valid_u/meta_expressions_v2.json \
+  dataset/RVOS_ROOT/mevis/valid_u/meta_expressions.json
+```
+
+The filename mapping in the final command is required because VIRST expects the
+annotation file to be named `meta_expressions.json`.
+
 ```
 RVOS_ROOT
 ├── ReVOS

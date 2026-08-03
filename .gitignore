@@ -16,5 +16,6 @@ outputs/
 checkpoints/
 third_party/
 eval_results/
+dataset/
 
 *.log
