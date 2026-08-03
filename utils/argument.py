@@ -7,6 +7,14 @@ import transformers
 @dataclass
 class ModelArguments:
     model_name_or_path: Optional[str] = field(default="facebook/opt-125m")
+    videochat_checkpoint: Optional[str] = field(
+        default="checkpoints/videochat",
+        metadata={"help": "Local VideoChat-Flash-Qwen2-7B_res448 checkpoint directory."},
+    )
+    sam2_checkpoint: Optional[str] = field(
+        default="checkpoints/sam2.1_hiera_large.pt",
+        metadata={"help": "Local SAM2.1 Hiera Large checkpoint file."},
+    )
     model_class_name: Optional[str] = field(default=None, metadata={"help": "Used to init model class, format is XXXXForCausalLM. e.g. currently XXXX is chosen from LlavaLlama, LlavaMixtral, LlavaMistral, Llama"})
     tokenizer: Optional[str] = field(default = "model/videochat")
 
@@ -148,7 +156,7 @@ class TrainingArguments(transformers.TrainingArguments):
     auto_find_batch_size: bool = field(default=False)
     gradient_checkpointing: bool = field(default=True)
     verbose_logging: bool = field(default=True)
-    attn_implementation: str = field(default="flash_attention_2", metadata={"help": "Use transformers attention implementation."})
+    attn_implementation: str = field(default="sdpa", metadata={"help": "Use transformers attention implementation."})
     num_train_epochs: int = 64
     batch_size_per_device: int = 16
     learning_rate: float = 1e-5

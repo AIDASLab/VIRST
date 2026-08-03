@@ -1,4 +1,5 @@
 from typing import List, Optional, Tuple, Union, Dict
+from types import SimpleNamespace
 
 import torch
 import torch.nn as nn
@@ -159,6 +160,8 @@ class VirstForCausalLM(VideoChatFlashQwenForCausalLM):
         model_args,
         **kwargs
     ):
+        if isinstance(model_args, dict):
+            model_args = SimpleNamespace(**model_args)
         self.seg_token_idx = kwargs.pop("seg_token_idx")
         super().__init__(config, **kwargs)
 

@@ -1,4 +1,6 @@
 import logging
+from dataclasses import asdict
+from pathlib import Path
 import torch
 from transformers import AutoModelForCausalLM
 from peft import get_peft_model, LoraConfig, TaskType
@@ -7,21 +9,34 @@ from collections import OrderedDict
 from model.VIRST import VirstForCausalLM
 
 def build_virst(config, seg_token_idx, model_args, checkpoint=None):
-    # train from the videochat model 
-    videochat_ckpt = 'checkpoints'
+    videochat_ckpt = Path(model_args.videochat_checkpoint)
+    if not videochat_ckpt.is_dir():
+        raise FileNotFoundError(
+            f"VideoChat-Flash checkpoint directory not found: {videochat_ckpt}. "
+            "Run `bash scripts/setup_assets.sh` or pass --videochat_checkpoint."
+        )
+
+    sam2_checkpoint = Path(model_args.sam2_checkpoint)
+    if not sam2_checkpoint.is_file():
+        raise FileNotFoundError(
+            f"SAM2 checkpoint not found: {sam2_checkpoint}. "
+            "Run `bash scripts/setup_assets.sh` or pass --sam2_checkpoint."
+        )
+    config.sam2_config["checkpoint"] = str(sam2_checkpoint)
 
     kwargs = {
         "seg_token_idx":seg_token_idx
     }
     
     model = AutoModelForCausalLM.from_pretrained(
-        'checkpoints/videochat',
+        str(videochat_ckpt),
         config=config,
         device_map = None,
         trust_remote_code=True,
+        attn_implementation="sdpa",
         use_safetensors=True,
         ignore_mismatched_sizes=True,
-        model_args = model_args,
+        model_args=asdict(model_args),
         **kwargs
     )
 

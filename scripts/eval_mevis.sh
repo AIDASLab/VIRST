@@ -6,7 +6,9 @@ GPU_DEVICES="${GPU_DEVICES:-0}"
 DATASET="${1:-${DATASET:-}}"
 PROMPT_VERSION="${PROMPT_VERSION:-qwen_2}"
 TOKENIZER="${TOKENIZER:-model/videochat}"
-MODEL_CHECKPOINT="${MODEL_CHECKPOINT:-}"
+VIDEOCHAT_CHECKPOINT="${VIDEOCHAT_CHECKPOINT:-checkpoints/videochat}"
+SAM2_CHECKPOINT="${SAM2_CHECKPOINT:-checkpoints/sam2.1_hiera_large.pt}"
+MODEL_CHECKPOINT="${MODEL_CHECKPOINT:-checkpoints/virst_checkpoint.pt}"
 RVOS_ROOT="${RVOS_ROOT:-}"
 EVAL_OUTPUT_ROOT="${EVAL_OUTPUT_ROOT:-./eval_results}"
 EVAL_LOG_ROOT="${EVAL_LOG_ROOT:-./eval_results}"
@@ -20,8 +22,10 @@ fi
 
 case "${DATASET}" in
     mevis_valid)
+        DATASET_SUBDIR="mevis/valid_u"
         ;;
     mevis_test)
+        DATASET_SUBDIR="mevis/valid"
         ;;
     *)
         echo "Unsupported dataset: ${DATASET}"
@@ -40,11 +44,34 @@ echo "Using GPUs: ${GPU_DEVICES}"
 echo "Dataset: ${DATASET}"
 echo "Eval output root: ${EVAL_OUTPUT_ROOT}"
 
+for required_file in "${MODEL_CHECKPOINT}" "${SAM2_CHECKPOINT}"; do
+    if [[ ! -f "${required_file}" ]]; then
+        echo "Required checkpoint not found: ${required_file}" >&2
+        echo "Run: bash scripts/setup_assets.sh" >&2
+        exit 1
+    fi
+done
+
+if [[ ! -d "${VIDEOCHAT_CHECKPOINT}" ]]; then
+    echo "VideoChat checkpoint directory not found: ${VIDEOCHAT_CHECKPOINT}" >&2
+    echo "Run: bash scripts/setup_assets.sh" >&2
+    exit 1
+fi
+
+RESOLVED_RVOS_ROOT="${RVOS_ROOT:-dataset/RVOS_ROOT}"
+if [[ ! -f "${RESOLVED_RVOS_ROOT}/${DATASET_SUBDIR}/meta_expressions.json" ]]; then
+    echo "Dataset metadata not found: ${RESOLVED_RVOS_ROOT}/${DATASET_SUBDIR}/meta_expressions.json" >&2
+    echo "Set RVOS_ROOT to the directory containing the mevis folder." >&2
+    exit 1
+fi
+
 CMD=(
     deepspeed
     --master_port "${MASTER_PORT}"
     eval.py
     --tokenizer "${TOKENIZER}"
+    --videochat_checkpoint "${VIDEOCHAT_CHECKPOINT}"
+    --sam2_checkpoint "${SAM2_CHECKPOINT}"
     --dataset "${DATASET}"
     --eval_output_root "${EVAL_OUTPUT_ROOT}"
     --eval_log_root "${EVAL_LOG_ROOT}"
@@ -78,9 +105,7 @@ CMD=(
     --keyframe_scheme uniform
 )
 
-if [[ -n "${MODEL_CHECKPOINT}" ]]; then
-    CMD+=(--model_checkpoint "${MODEL_CHECKPOINT}")
-fi
+CMD+=(--model_checkpoint "${MODEL_CHECKPOINT}")
 
 if [[ -n "${RVOS_ROOT}" ]]; then
     CMD+=(--rvos_root "${RVOS_ROOT}")

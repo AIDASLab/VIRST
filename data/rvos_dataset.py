@@ -22,6 +22,14 @@ from utils.video_utils import read_frames_sam2, sample_index_masks
 
 logger = logging.getLogger(__name__)
 
+
+def _paths_for_root(dataset, root):
+    image_root, json_file = _DATA_INFO[dataset]
+    return (
+        osp.join(root, osp.relpath(image_root, RVOS_ROOT)),
+        osp.join(root, osp.relpath(json_file, RVOS_ROOT)),
+    )
+
 class RVOSDataset(BaseVirstDataset):
     def __init__(
         self, 
@@ -105,9 +113,7 @@ class RVOSDataset(BaseVirstDataset):
             assert dataset in _DATA_INFO.keys(), f"dataset {dataset} not found!"
             logger.info("Loading %s into memory", dataset)
 
-            image_root, json_file = _DATA_INFO[dataset]
-            image_root = osp.join(self.root, image_root)
-            json_file = osp.join(self.root, json_file)
+            image_root, json_file = _paths_for_root(dataset, self.root)
             if 'mevis' in dataset or 'revos' in dataset or 'lvvis' in dataset or 'restvos' in dataset:
                 metas, mask_dict, vid2metaid, is_train = load_mevis_json(image_root, json_file, dataset, is_train = True)
             elif 'refytvos' in dataset or 'davis' in dataset:
@@ -136,9 +142,7 @@ class RVOSDataset(BaseVirstDataset):
         dataset = self.rvos_seg_ds_list[0]
 
         self.d2_dataset_dicts = []
-        image_root, json_file = _DATA_INFO[dataset]
-        image_root = osp.join(self.root, image_root)
-        json_file = osp.join(self.root, json_file)        
+        image_root, json_file = _paths_for_root(dataset, self.root)
 
         
         if 'mevis' in dataset or 'revos' in dataset or 'lvvis' in dataset or 'restvos' in dataset:

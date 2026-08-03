@@ -52,6 +52,43 @@ conda activate virst
 pip install -r requirements.txt
 ```
 
+The requirements use PyTorch's CUDA 12.8 wheels so the environment works on both
+Blackwell GPUs and older supported NVIDIA architectures. VIRST defaults to
+PyTorch SDPA, so FlashAttention is optional. If you have a matching CUDA toolkit
+with `nvcc`, install it only after PyTorch:
+
+```bash
+pip install flash-attn==2.7.4.post1 --no-build-isolation
+```
+
+If Conda's default package cache is not writable, point it at a writable directory
+before creating the environment:
+
+```bash
+export CONDA_PKGS_DIRS="$PWD/.conda-pkgs"
+```
+
+## Model assets
+
+Download the VideoChat-Flash source and base weights, the SAM2.1 Hiera Large
+checkpoint, and the VIRST checkpoint with:
+
+```bash
+bash scripts/setup_assets.sh
+```
+
+This creates the following ignored local files:
+
+```text
+third_party/VideoChat-Flash/
+checkpoints/videochat/
+checkpoints/sam2.1_hiera_large.pt
+checkpoints/virst_checkpoint.pt
+```
+
+The VideoChat-Flash source clone is retained for provenance and reference. VIRST
+loads the Hugging Face base weights from `checkpoints/videochat`.
+
 
 ## Checkpoint
 
@@ -106,17 +143,20 @@ RVOS_ROOT
 Run MeViS evaluation with:
 
 ```bash
-MODEL_CHECKPOINT=/path/to/checkpoint \
+MODEL_CHECKPOINT=checkpoints/virst_checkpoint.pt \
 bash scripts/eval_mevis.sh mevis_valid
 ```
 
 If your dataset is not stored under the default `<repo>/dataset/RVOS_ROOT`, set `RVOS_ROOT` explicitly:
 
 ```bash
-MODEL_CHECKPOINT=/path/to/checkpoint \
+MODEL_CHECKPOINT=checkpoints/virst_checkpoint.pt \
 RVOS_ROOT=/path/to/RVOS_ROOT \
 bash scripts/eval_mevis.sh mevis_valid
 ```
+
+To use non-default model locations, set `VIDEOCHAT_CHECKPOINT` and
+`SAM2_CHECKPOINT` when invoking the evaluation script.
 
 Supported dataset names for the script are:
 

@@ -4,7 +4,6 @@ import glob
 from functools import partial, reduce
 import deepspeed
 from tqdm import tqdm 
-import wandb
 import traceback
 import json
 from datetime import datetime
@@ -196,7 +195,7 @@ def main(timestamp=None):
     
     _, exp_root = _DATA_INFO[dataset]
     rvos_root = data_args.rvos_root or RVOS_ROOT
-    exp_path = os.path.join(rvos_root, exp_root)
+    exp_path = os.path.join(rvos_root, os.path.relpath(exp_root, RVOS_ROOT))
     
     exp_dict = json.load(open(exp_path))['videos']
 
